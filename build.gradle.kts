@@ -1,11 +1,17 @@
 import org.gradle.api.tasks.bundling.Jar
 
 plugins {
+    `java-library`
     `maven-publish`
     kotlin("jvm") version "1.6.10"
 }
 
-group = "io.dereknelson.lostcities"
+java {
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
+}
+
+group = "io.dereknelson.lostcities-cloud"
 version = "1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_16
 
