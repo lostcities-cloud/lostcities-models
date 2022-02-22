@@ -5,5 +5,6 @@ enum class PlayerEventType {
     DRAW_CARD,
     PLAY_CARD,
     DISCARD_CARD,
+    START_TURN,
     END_TURN
 }
