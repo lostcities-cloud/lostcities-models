@@ -1,9 +1,8 @@
 package io.dereknelson.lostcities.models
 
+import io.dereknelson.lostcities.models.matches.PlayerEvent
 import io.dereknelson.lostcities.models.state.Card
 import io.dereknelson.lostcities.models.state.PlayArea
-import io.dereknelson.lostcities.models.matches.PlayerEvent
-
 
 class PlayerViewDto(
     val id: Long,
