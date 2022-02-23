@@ -31,28 +31,6 @@ dependencies {
     }
 }
 
-/*publishing {
-
-    repositories {
-
-        publications {
-            register("mavenJava", MavenPublication::class) {
-                from(components["java"])
-                artifact(sourcesJar.get())
-            }
-        }
-
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/lostcities-cloud/lostcities-models")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-}*/
-
 val outputDir = "${project.buildDir}/reports/ktlint/"
 val inputFiles = project.fileTree(mapOf("dir" to "src", "include" to "**/*.kt"))
 
@@ -74,6 +52,24 @@ val ktlintFormat by tasks.creating(JavaExec::class) {
     mainClass.set("com.pinterest.ktlint.Main")
     args = listOf("-F", "src/**/*.kt")
     jvmArgs("--add-opens", "java.base/java.lang=ALL-UNNAMED")
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/lostcities-cloud/lostcities-models")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
