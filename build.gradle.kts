@@ -1,19 +1,16 @@
 import org.gradle.api.tasks.bundling.Jar
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `java-library`
     `maven-publish`
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.7.+"
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
-}
 
 group = "io.dereknelson.lostcities-cloud"
 version = "1.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_16
+
 
 repositories {
     mavenCentral()
@@ -42,6 +39,22 @@ val ktlintCheck by tasks.creating(JavaExec::class) {
     classpath = ktlint
     mainClass.set("com.pinterest.ktlint.Main")
     args = listOf("src/**/*.kt")
+}
+
+tasks.withType<KotlinCompile>() {
+
+    kotlinOptions {
+        jvmTarget = "17"
+        apiVersion = "1.7"
+        languageVersion = "1.7"
+        freeCompilerArgs = listOf("-Xjsr305=strict")
+    }
+
+    // you can also add additional compiler args,
+    // like opting in to experimental features
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-opt-in=kotlin.RequiresOptIn",
+    )
 }
 
 val ktlintFormat by tasks.creating(JavaExec::class) {
@@ -73,6 +86,5 @@ publishing {
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
-    classifier = "sources"
     from(sourceSets.main.get().allSource)
 }
