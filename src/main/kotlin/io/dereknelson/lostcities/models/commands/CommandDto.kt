@@ -1,6 +1,7 @@
 package io.dereknelson.lostcities.models.commands
 
 import io.dereknelson.lostcities.models.state.Color
+import java.time.LocalDateTime
 
 /**
  *  Events
@@ -13,5 +14,7 @@ import io.dereknelson.lostcities.models.state.Color
 data class CommandDto(
     val type: CommandType,
     val card: String?,
-    val color: Color?
+    val color: Color?,
+    val player: String? = null,
+    val received: LocalDateTime? = null,
 )
