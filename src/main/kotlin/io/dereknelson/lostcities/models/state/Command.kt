@@ -7,7 +7,7 @@ data class Command(
     val draw: Boolean,
     val discard: Boolean,
     val color: Color?,
-    val card: Card?
+    val card: Card?,
 ) {
     fun validate(): Boolean {
         return if (phase == Phase.PLAY_OR_DISCARD) {

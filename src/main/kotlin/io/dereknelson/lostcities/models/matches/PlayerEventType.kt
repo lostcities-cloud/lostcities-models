@@ -6,5 +6,5 @@ enum class PlayerEventType {
     PLAY_CARD,
     DISCARD_CARD,
     START_TURN,
-    END_TURN
+    END_TURN,
 }

@@ -7,5 +7,5 @@ data class PlayerEvent(
     val player: String,
     val type: PlayerEventType,
     val card: String?,
-    val color: Color?
+    val color: Color?,
 )

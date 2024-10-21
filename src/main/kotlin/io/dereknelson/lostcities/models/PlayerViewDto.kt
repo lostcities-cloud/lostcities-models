@@ -12,5 +12,5 @@ class PlayerViewDto(
     val hand: MutableList<Card>,
     val playAreas: Map<String, PlayArea>,
     val discard: PlayArea,
-    val playerEvents: List<PlayerEvent>
+    val playerEvents: List<PlayerEvent>,
 )
