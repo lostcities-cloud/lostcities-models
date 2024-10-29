@@ -78,6 +78,7 @@ publishing {
     publications {
         register<MavenPublication>("gpr") {
             from(components["java"])
+            version = project.property("version")!! as String
         }
     }
 }
