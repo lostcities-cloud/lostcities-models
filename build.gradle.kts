@@ -2,6 +2,8 @@ import org.gradle.api.tasks.bundling.Jar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+
+    jacoco
     `java-library`
     `maven-publish`
     id("com.github.rising3.semver") version "0.8.2"
@@ -86,3 +88,13 @@ publishing {
 val sourcesJar by tasks.registering(Jar::class) {
     from(sourceSets.main.get().allSource)
 }
+
+
+
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport {
+    dependsOn(tasks.test) // tests are required to run before generating the report
+}
+
