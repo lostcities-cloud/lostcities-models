@@ -7,7 +7,7 @@ plugins {
     `java-library`
     `maven-publish`
     id("com.github.rising3.semver") version "0.8.2"
-    kotlin("jvm") version "2.0.+"
+    kotlin("jvm") version "2.1.+"
 }
 
 
