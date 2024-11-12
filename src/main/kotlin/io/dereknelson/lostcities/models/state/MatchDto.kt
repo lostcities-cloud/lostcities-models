@@ -1,6 +1,5 @@
 package io.dereknelson.lostcities.models.state
 
-
 class MatchDto(
     val id: Long? = null,
     val players: UserPair,
