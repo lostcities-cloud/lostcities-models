@@ -16,5 +16,5 @@ data class CommandDto(
     val card: String?,
     val color: Color?,
     val player: String? = null,
-    val received: LocalDateTime? = null,
+    val received: LocalDateTime = LocalDateTime.now(),
 )
